@@ -12,7 +12,12 @@ void main() {
       }
     }
 
-    //Check equilateral triangle
+    //Triangle Inequality theorem
+    if (sides[0] + sides[1] <= sides[2]) {
+      throw Exception('Inequal Triangle');
+    }
+
+    //Check triangle types
     if (sides[0] == sides[1] && sides[0] == sides[2]) {
       return "equilateral triangle";
     }
@@ -30,19 +35,19 @@ void main() {
 
     test('Should return "equilateral triangle" when all sides are equal', () {
       expect(detectTriangle(1, 1, 1), "equilateral triangle");
-      expect(detectTriangle(1, 1, 2), isNot("equilateral triangle"));
+      expect(detectTriangle(2, 2, 1), isNot("equilateral triangle"));
     });
 
     test('Should return "isosceles triangle" when only two sides are equal',
         () {
-      expect(detectTriangle(1, 1, 2), "isosceles triangle");
-      expect(detectTriangle(1, 3, 1), "isosceles triangle");
-      expect(detectTriangle(2, 2, 1), "isosceles triangle");
+      expect(detectTriangle(2, 2, 3), "isosceles triangle");
+      expect(detectTriangle(4, 2, 4), "isosceles triangle");
+      expect(detectTriangle(4, 1, 4), "isosceles triangle");
       expect(detectTriangle(1, 2, 2), "isosceles triangle");
     });
 
     test('Should return "Scalene Triangle" when no sides are equal', () {
-      expect(detectTriangle(1, 2, 3), "scalene triangle");
+      expect(detectTriangle(2, 4, 3), "scalene triangle");
     });
   });
 }
