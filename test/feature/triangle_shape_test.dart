@@ -15,6 +15,9 @@ void main() {
     if (sideA == sideB && sideA == sideC && sideB == sideC) {
       return "This is equilateral triangle";
     }
+    if (sides[0] == sides[1]) {
+      return "isosceles triangle";
+    }
   }
 
   group('Detect the triangle', () {
@@ -25,6 +28,11 @@ void main() {
     test('Should return "equilateral triangle" when all sides are equal', () {
       expect(detectTriangle(1, 1, 1), "equilateral triangle");
       expect(detectTriangle(1, 1, 2), isNot("equilateral triangle"));
+    });
+
+    test('Should return "isosceles triangle" when only two sides are equal',
+        () {
+      expect(detectTriangle(1, 1, 2), "isosceles triangle");
     });
   });
 }
